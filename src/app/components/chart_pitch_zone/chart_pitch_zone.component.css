@@ -1,0 +1,74 @@
+:host {
+  height: 375px;
+  /* width: 375px; */
+  display: flex;
+  margin-top: 24px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.chart-container {
+  position: relative;
+}
+
+.chart-batter {
+  position: absolute;
+  bottom: 0;
+  height: 54%;
+}
+
+.chart-batter.rh {
+  left: 16%;
+}
+
+.chart-batter.lh {
+  right: 16%;
+}
+
+/* Allows parent component to set height. */
+canvas {
+  height: inherit;
+  width: inherit;
+}
+
+.events {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1 1 auto;
+  /* 64px == computed height of .instructions */
+  height: calc(100% - 64px);
+  overflow-y: scroll;
+  border-right: 1px solid #e1e2db;
+  border-bottom: 1px solid #e1e2db;
+}
+
+.events-list-item {
+  padding: 16px;
+  color: #555;
+}
+
+.events-list-item:nth-child(even) {
+  background: #eaeae8;
+}
+
+.pitch-type {
+  color: var(--theme-primary-color);
+}
+
+.event-type {
+  color: var(--theme-secondary-color);
+}
+
+.event-result {
+  margin-left: 10px;
+  color: var(--theme-warn-color);
+}
+
+.instructions {
+  color: white;
+  font-size: 14px;
+  padding: 16px;
+  margin: 0;
+}

@@ -1,0 +1,12 @@
+.spinner-container {
+  margin: 30% auto;
+}
+
+.content {
+  padding: 16px 24px 40px;
+  /* padding-top: var(--header-height); */
+}
+
+search {
+  margin-right: 24px;
+}

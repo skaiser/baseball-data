@@ -1,0 +1,10 @@
+mat-toolbar {
+  color: #fff;
+  display: block;
+  height: var(--header-height, 72px);
+  padding: 16px;
+}
+
+.logo {
+  height: 100%;
+}

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  background: #fafafa;
+  font-family: Quicksand, Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --header-height: 72px;
+  --theme-primary-color:var(--mdc-primary-color, #b81233);
+  --theme-secondary-color: var(--mdc-secondary-color, #051f41);
+  --theme-warn-color:var(--mdc-warn-color, #f44336);
+}
+

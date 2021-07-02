@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+  <!-- <mat-sidenav #sidenav [mode]="'over'"> </mat-sidenav> -->
+  <mat-sidenav-content>
+    <header [title]="title"></header>
+    <div
+      *ngIf="!isLoaded; else contentTmpl"
+      class="spinner-container"
+    >
+      <spinner></spinner>
+    </div>
+    <ng-template #contentTmpl>
+      <div class="content">
+        <search
+          [options]="players"
+          (onSearch)="updateSelectedPlayer($event)"
+        ></search>
+        <ng-container *ngIf="selectedPlayer">
+          <filters
+            (filtersChanged)="updateFilters($event)"
+          ></filters>
+          <chart-pitch-types
+            *ngIf="pitchEvents?.length > 0"
+            [pitchEvents]="pitchEvents"
+          ></chart-pitch-types>
+          <chart-pitch-zone
+            *ngIf="pitchEvents?.length > 0"
+            [pitchEvents]="pitchEvents"
+          ></chart-pitch-zone>
+        </ng-container>
+      </div>
+    </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>

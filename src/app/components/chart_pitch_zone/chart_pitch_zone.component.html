@@ -1,0 +1,40 @@
+<div class="chart-container">
+  <canvas #pitchzone height="375" width="375"></canvas>
+  <img
+    class="chart-batter rh"
+    src="assets/RH_batter_outline.svg"
+    alt="Right hand batter"
+  />
+  <img
+    class="chart-batter lh"
+    src="assets/LH_batter_outline.svg"
+    alt="Left hand batter"
+  />
+</div>
+<div>
+  <mat-toolbar color="primary" class="instructions">
+    <span>Hover an item to highlight it in the chart.</span>
+  </mat-toolbar>
+  <ul #events class="events">
+    <li
+      *ngFor="let event of pitchEvents; let index = index"
+      class="events-list-item"
+      (mouseover)="selectItem(index)"
+      (mouseout)="deselectItem(index)"
+    >
+      <span>{{getPlayString(event)}}</span>
+      <span class="pitch-type"
+        >{{getPitchTypeString(event)}}</span
+      >
+      <br />
+      <span>
+        {{event.batter_name}} vs {{event.pitcher_name}}
+      </span>
+      <br />
+      <span class="event-type"> {{event.event_type}} </span>
+      <span class="event-result">
+        {{event.event_result}}
+      </span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+<form>
+  <mat-form-field>
+    <mat-label>Player search</mat-label>
+    <input
+      #input
+      type="text"
+      autocomplete="off"
+      placeholder="Enter a player name"
+      aria-label="Number"
+      matInput
+      [formControl]="searchCtrl"
+      [matAutocomplete]="auto"
+    />
+  </mat-form-field>
+  <button
+    [style.marginLeft]="'16px'"
+    type="submit"
+    mat-flat-button
+    color="primary"
+    (click)="emitSearch(input.value)"
+  >
+    Get stats
+  </button>
+</form>
+<mat-autocomplete
+  #auto="matAutocomplete"
+  autoActiveFirstOption
+  (optionSelected)="emitSearch($event.option.value)"
+>
+  <mat-option
+    *ngFor="let option of filteredOptions | async"
+    [value]="option"
+  >
+    {{option}}
+  </mat-option>
+</mat-autocomplete>

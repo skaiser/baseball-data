@@ -1,8 +1,4 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import { strikeTypes } from 'src/app/shared/constants';
 
@@ -10,12 +6,6 @@ export declare interface FilterOption {
   value: string;
   displayName: string;
 }
-
-// export enum FilterOption {
-//   NONE,
-//   BALLS,
-//   STRIKES,
-// }
 
 /**
  * Filters component

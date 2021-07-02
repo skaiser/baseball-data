@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Chart } from 'angular2-chartjs';
 
 import { PitchEvent } from 'src/app/shared/types';
@@ -47,24 +42,15 @@ export class ChartPitchTypes implements OnDestroy {
     for (let i = 0; i < events.length; i++) {
       const p = events[i];
 
-      const pitchTypeCounter =
-        this.pitchTypeCount.get(p.pitch_type) || 0;
-      this.pitchTypeCount.set(
-        p.pitch_type,
-        pitchTypeCounter + 1
-      );
+      const pitchTypeCounter = this.pitchTypeCount.get(p.pitch_type) || 0;
+      this.pitchTypeCount.set(p.pitch_type, pitchTypeCounter + 1);
     }
     const data = Array.from(this.pitchTypeCount.values());
-    this.numPitches = data
-      .map(((sum) => (value) => (sum += value))(0))
-      .pop();
-    const labels = Array.from(this.pitchTypeCount.keys()).map(
-      (k, i) => {
-        const percentage =
-          Math.floor((data[i] / this.numPitches) * 100) || 0;
-        return `${k} (${percentage}%)`;
-      }
-    );
+    this.numPitches = data.map(((sum) => (value) => (sum += value))(0)).pop();
+    const labels = Array.from(this.pitchTypeCount.keys()).map((k, i) => {
+      const percentage = Math.floor((data[i] / this.numPitches) * 100) || 0;
+      return `${k} (${percentage}%)`;
+    });
 
     this.chartData = {
       labels: labels,

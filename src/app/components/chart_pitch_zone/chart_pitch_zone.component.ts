@@ -1,19 +1,7 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
-import {
-  EventType,
-  PitchEvent,
-  ThrowSide,
-} from 'src/app/shared/types';
-import {
-  CHART_COLORS,
-  strikeTypes,
-} from 'src/app/shared/constants';
+import { EventType, PitchEvent, ThrowSide } from 'src/app/shared/types';
+import { CHART_COLORS, strikeTypes } from 'src/app/shared/constants';
 
 const HOME_PLATE_INCHES = 17;
 const DEFAULT_PITCH_RADIUS = 4;
@@ -92,10 +80,8 @@ export class ChartPitchZoneComponent {
 
   private draw(): void {
     requestAnimationFrame(() => {
-      const canvas:
-        | HTMLCanvasElement
-        | undefined
-        | null = this.pitchZone?.nativeElement;
+      const canvas: HTMLCanvasElement | undefined | null = this.pitchZone
+        ?.nativeElement;
       if (!canvas) {
         return;
       }
@@ -109,17 +95,12 @@ export class ChartPitchZoneComponent {
       const ratio = this.getCanvasSizeRatio();
 
       // Draw some simulated path for ball as a bottom "layer".
-      for (
-        let i = 0;
-        i < this.activePitchEvents.length;
-        i++
-      ) {
+      for (let i = 0; i < this.activePitchEvents.length; i++) {
         let p = this.activePitchEvents[i];
 
         ctx.beginPath();
         ctx.moveTo(
-          this.normalizePosition(p.init_pos_x) +
-            canvasCenterX,
+          this.normalizePosition(p.init_pos_x) + canvasCenterX,
           canvas.height - this.normalizePosition(p.init_pos_z)
         );
         //ctx.quadraticCurveTo(normalizePosition(p.init_pos_x) + canvasCenterX - 50, canvasEl.height - normalizePosition(p.init_pos_z) - 50, normalizePosition(p.plate_x) + canvasCenterX, canvasEl.height - normalizePosition(p.plate_z));
@@ -130,12 +111,8 @@ export class ChartPitchZoneComponent {
         //ctx.quadraticCurveTo(normalizePosition(p.plate_x) + (4 * ratio), normalizePosition(p.plate_z) - (4 * ratio), normalizePosition(p.plate_x) + canvasCenterX, canvasEl.height - normalizePosition(p.plate_z));
         // TODO(kaisers): Take into account release point being in distance
         ctx.quadraticCurveTo(
-          this.normalizePosition(p.init_pos_x) +
-            canvasCenterX +
-            curveOffset,
-          canvas.height -
-            this.normalizePosition(p.init_pos_z) -
-            curveOffset,
+          this.normalizePosition(p.init_pos_x) + canvasCenterX + curveOffset,
+          canvas.height - this.normalizePosition(p.init_pos_z) - curveOffset,
           this.normalizePosition(p.plate_x) + canvasCenterX,
           canvas.height - this.normalizePosition(p.plate_z)
         );
@@ -151,11 +128,7 @@ export class ChartPitchZoneComponent {
         ctx.stroke();
       }
 
-      for (
-        let i = 0;
-        i < this.activePitchEvents.length;
-        i++
-      ) {
+      for (let i = 0; i < this.activePitchEvents.length; i++) {
         let p = this.activePitchEvents[i];
         const radius =
           i === this.highlightedPitch
@@ -165,10 +138,8 @@ export class ChartPitchZoneComponent {
         // Pitcher release point
         ctx.beginPath();
         ctx.arc(
-          this.normalizePosition(p.init_pos_x) +
-            canvasCenterX,
-          canvas.height -
-            this.normalizePosition(p.init_pos_z),
+          this.normalizePosition(p.init_pos_x) + canvasCenterX,
+          canvas.height - this.normalizePosition(p.init_pos_z),
           radius,
           0,
           2 * Math.PI

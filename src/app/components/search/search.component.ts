@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -26,7 +20,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.filteredOptions = this.searchCtrl.valueChanges.pipe(
       startWith(''),
-      map((value) => this.filter(value)),
+      map((value) => this.filter(value))
     );
   }
 
@@ -37,11 +31,9 @@ export class SearchComponent implements OnInit {
   private filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     const options =
-      this.options instanceof Set
-        ? [...this.options]
-        : this.options;
+      this.options instanceof Set ? [...this.options] : this.options;
     return options.filter((option) =>
-      option.toLowerCase().includes(filterValue),
+      option.toLowerCase().includes(filterValue)
     );
   }
 }

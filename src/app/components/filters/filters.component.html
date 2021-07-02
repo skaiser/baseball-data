@@ -1,14 +1,11 @@
 <mat-form-field appearance="standard" floatLabel="always">
   <mat-label>Filter</mat-label>
+  <!-- TODO(kaisers): Allow multiple. -->
   <mat-select
-    zzzzmultiple
     [(value)]="selected"
     (selectionChange)="emitFiltersChanged($event.value)"
   >
-    <mat-option
-      *ngFor="let option of options"
-      [value]="option.value"
-    >
+    <mat-option *ngFor="let option of options" [value]="option.value">
       {{option.displayName}}
     </mat-option>
   </mat-select>

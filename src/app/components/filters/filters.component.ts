@@ -26,7 +26,7 @@ export class FiltersComponent {
       displayName: 'Swinging Strikes',
     },
     { value: 'strikeout', displayName: 'Strikeouts' },
-    { value: 'in_play', displayName: 'In Play' },
+    { value: 'hit_into_play', displayName: 'In Play' },
   ];
   selected: string[] = [this.options[0].value];
 
